@@ -2,7 +2,7 @@
 #include <vector>
 #include "Canvas.h"
 
-struct Point {
+struct Point {// структура, новый тип данных
 	Point(int _x = 0, int _y = 0) : x(_x), y(_y) {}
 	int x;
 	int y;
@@ -33,8 +33,8 @@ private:
 
 	double m_TimeFromLastUpdate = 0;
 	double m_TimeForUpdate = 500;
-	std::vector<std::vector<Point>> m_Body;
-	size_t m_CurrentRotate = 0;
+	std::vector<std::vector<Point>> m_Body;// массив фигур упавших
+	size_t m_CurrentRotate = 0;//индекс текущего поворота
 	size_t m_CurrentRotateBackUp = 0;
 };
 

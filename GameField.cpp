@@ -26,8 +26,10 @@ void GameField::Draw(Canvas& canvas)
 	canvas.SetChar(0, m_Height - 1, 0x255A);
 	canvas.SetChar(m_Width - 1, m_Height - 1, 0x255D);
 
-	for (int y = 1; y < m_Height - 1; ++y) {
-		for (int x = 1; x < m_Height - 1; ++x) {
+	for (int y = 0; y < m_Field.size(); ++y) //отрисовка поля где фигуры и пустое место
+	{
+		for (int x = 0; x < m_Field[y].size(); ++x) 
+		{
 			canvas.SetChar(x + 1, y + 1, m_Field[y][x]);
 		}
 	}
@@ -56,7 +58,7 @@ size_t GameField::Merge(const Figure& figure)
 	for (size_t i = 0; i < m_Field.size(); ++i) //изчезание полной линии
 	{
 		bool fool = true;
-		for (size_t j = 0; j < m_Field.size(); ++j) {
+		for (size_t j = 0; j < m_Field[i].size(); ++j) {
 			fool = fool && m_Field[i][j] != 0x0387;
 		}
 
@@ -64,7 +66,8 @@ size_t GameField::Merge(const Figure& figure)
 		if (fool) //если заполнил 
 		{
 			score = 4;//+ 4 очка 
-			for (size_t j = i; j > 0; j--) {//оставшиеся фигуры падают вниз
+			for (size_t j = i; j > 0; j--) //оставшиеся фигуры падают вниз
+			{
 				m_Field[j] = m_Field[j - 1];
 			}
 			m_Field[0] = std::vector<wchar_t>(m_Width - 2, 0x0387);

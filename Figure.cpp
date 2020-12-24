@@ -41,7 +41,7 @@ void Figure::Update(double dt)
 
 void Figure::Draw(Canvas& canvas) 
 {
-	for (const Point& point : m_Body) {
+	for (const Point& point : m_Body[m_CurrentRotate]) {
 		canvas.SetChar(point.x + m_Position.x, point.y + m_Position.y, 0x25D8);
 	}
 }
@@ -96,7 +96,8 @@ void Figure::Boost()
 	m_TimeForUpdate = 50;
 }
 
-std::vector<std::vector<Point>> Generate()
+/*std::vector<std::vector<Point>> Generate()
 {
 	return std::vector<std::vector<Point>>();
 }
+*/

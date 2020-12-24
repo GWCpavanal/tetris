@@ -3,15 +3,16 @@
 
 Tetris::Tetris() : m_Figure(Point(5, 1)), m_NextFigure(Point(16, 1))
 {
-	m_GameField.Resize(14, 26);
-	m_Canvas.Resize(26, 25);
+	m_GameField.Resize(14, 26);//размер игрового поля
+	m_Canvas.Resize(26, 20);//размер консольного окна
 }
 
 void Tetris::OnKeyPressed(int btnCode){
 	switch (btnCode) 
 	{
-	case 32:
+	case 72: // стрелка вверх, поворот фигуры
 		m_Figure.Rotate();
+		break;
 
 	case 75: // стрелка влево
 		m_Figure.MoveL();
@@ -19,6 +20,7 @@ void Tetris::OnKeyPressed(int btnCode){
 
 	case 77: // стрелка вправо
 		m_Figure.MoveR();
+		break;
 
 	case 80: // стрелка вниз
 		m_Figure.Boost();
@@ -60,9 +62,9 @@ void Tetris::Update(double dt)
 	m_Canvas.Render();
 }
 
-bool Tetris::End() 
+bool Tetris::End() //конец игры - проигрыш
 {
-	return false;
+	return m_End;
 }
 
 void Tetris::DrawScore(Canvas& canvas)
