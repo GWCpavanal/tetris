@@ -12,7 +12,7 @@ class Game
 public:
 	Game();
 
-	virtual void OnKeyPressed(int btnCode) = 0;
+	virtual void OnKeyPressed(int btnCode) = 0; //нажатие клавиши
 	virtual void Update(double dt) = 0;
 	virtual bool End() = 0;
 

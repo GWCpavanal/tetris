@@ -14,7 +14,7 @@ Game::Game()
 void Game::Run()
 {
 	Time last = Clock::now();
-	while (!End())
+	while (!End()) // пока не проиграл
 	{
 		FPS fps;
 
