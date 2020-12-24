@@ -2,22 +2,53 @@
 
 std::vector<std::vector<Point>> Generate()// генераця фигуры
 {
-	switch (rand() % 3)
+	switch (rand() % 7) // рандом 7 фигур
 	{
 	case 0: return
 	{
-	{ Point(0, 0), Point(1, 0), Point(2, 0), Point(3, 0) },
-	{ Point(1, 0), Point(1, 1), Point(1, 2), Point(1, 3) }
+		{ Point(0, 0), Point(1, 0), Point(2, 0), Point(3, 0) },//палка ___
+		{ Point(1, 0), Point(1, 1), Point(1, 2), Point(1, 3) } // |
 	};
 
-	case 1: return { {Point(0, 0), Point(1, 0), Point(1, 1), Point(1, 1)} };
+	case 1: return // г в другую сторону
+	{ 
+		{Point(0, 0), Point(1, 0), Point(1, 1), Point(1, 2)}, // `|
+		{Point(0, 1), Point(1, 1), Point(2, 1), Point(2, 0)}, // _ _|
+		{Point(0, 0), Point(0, 1), Point(0, 2), Point(1, 2)}, // L
+		{Point(0, 0), Point(1, 0), Point(2, 0), Point(0, 1)}  // |```
+	};
 
-	case 2: return
+	case 2: return // г
 	{
-	{ Point(0, 0), Point(1, 0), Point(2, 0), Point(1, 1) },
-	{ Point(1, 0), Point(1, 1), Point(1, 2), Point(0, 1) },
-	{ Point(0, 1), Point(1, 1), Point(2, 1), Point(1, 0) },
-	{ Point(0, 0), Point(0, 1), Point(0, 2), Point(1, 1) }
+		{Point(0, 0), Point(0, 1), Point(0, 2), Point(1, 0)}, // г
+		{Point(0, 0), Point(1, 0), Point(2, 0), Point(2, 1)}, // ```|
+		{Point(1, 0), Point(1, 1), Point(1, 2), Point(0, 2)}, // _|
+		{Point(0, 1), Point(1, 1), Point(2, 1), Point(0, 0)}  // |_ _
+	};
+
+	case 3: return
+	{
+		{ Point(0, 0), Point(1, 0), Point(2, 0), Point(1, 1) },// |-
+		{ Point(1, 0), Point(1, 1), Point(1, 2), Point(0, 1) },// _|_
+		{ Point(0, 1), Point(1, 1), Point(2, 1), Point(1, 0) },// -|
+		{ Point(0, 0), Point(0, 1), Point(0, 2), Point(1, 1) } // `T`
+	};
+
+	case 4: return
+	{
+		{Point(0, 0), Point(1, 0), Point(1, 1), Point(2, 1)}, // z
+		{Point(1, 0), Point(1, 1), Point(0, 1), Point(0, 2)}  // N
+	};
+
+	case 5: return //z в другую сторону
+	{
+		{Point(2, 0), Point(1, 0), Point(1, 1), Point(0, 1)}, // _|`
+		{Point(0, 0), Point(0, 1), Point(1, 1), Point(1, 2)}  // И
+	};
+
+	case 6: return 
+	{
+		{Point(0, 0), Point(0, 1), Point(1, 1), Point(1, 0)}, //квадрат
 	};
 	default:
 		break;
