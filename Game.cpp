@@ -21,7 +21,7 @@ void Game::Run()
 		if (_kbhit()) // нажатие любой клавиши
 		{
 			OnKeyPressed(_getch());
-			if (!FlushConsoleInputBuffer(m_ConsoleIn))
+			if (!FlushConsoleInputBuffer(m_ConsoleIn))// дебаг
 				std::cout << "FlushConsoleInputBuffer failed with error " << GetLastError() << std::endl;
 		}
 

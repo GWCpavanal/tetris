@@ -7,9 +7,9 @@ class Tetris : public Game //наследование от класса Game
 {
 public:
 	Tetris();
-	void OnKeyPressed(int btnCode) override;
-	void Update(double dt) override;
-	bool End() override;
+	void OnKeyPressed(int btnCode) override; //нажатие клавиши
+	void Update(double dt) override; // обновление состояния игры
+	bool End() override; // конец игры
 
 	void DrawScore(Canvas& canvas);
 

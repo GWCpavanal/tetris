@@ -1,7 +1,7 @@
 #pragma once
 #include <chrono>
 /*
-Ѕиблиотека реализует:
+Ѕиблиотека chrono реализует:
 
 интервалы времени Ц duration;
 моменты времени Ц time_point;

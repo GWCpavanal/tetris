@@ -52,8 +52,8 @@ bool GameField::MasCollision(const Figure& figure)// касание границ карты
 size_t GameField::Merge(const Figure& figure) // фигуры стакались на друг друге
 {
 	size_t score = 0;
-	Point position = figure.GetPosition();
-	for (const Point& point : figure.GetBody()) 
+	Point position = figure.GetPosition();// получение позиции (координат)
+	for (const Point& point : figure.GetBody()) // тела фигуры
 	{
 		m_Field[point.y + position.y - 1][point.x + position.x - 1] = 0x25D8;
 	}

@@ -13,7 +13,7 @@ public:
 	Game();
 
 	virtual void OnKeyPressed(int btnCode) = 0; //нажатие клавиши
-	virtual void Update(double dt) = 0; //падение вниз
+	virtual void Update(double dt) = 0; // обновление состояния игры
 	virtual bool End() = 0; //конец игры
 
 	void Run(); //работать игре

@@ -49,6 +49,7 @@ void Tetris::Update(double dt)
 		m_Figure = m_NextFigure;// след фигура стала текущей
 		m_Figure.SetPosition(Point(5, 1));// начальная точка откуда появляются фигуры
 		m_NextFigure = Figure(Point(15, 1));// генерация следующая фигура
+		
 		// когда уровень постройки достиг вершины - проиграл
 		if (m_GameField.MasCollision(m_Figure))
 		{

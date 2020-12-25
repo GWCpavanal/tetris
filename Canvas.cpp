@@ -70,7 +70,7 @@ void Canvas::Resize(int height, int width)
 }
 
 
-void Canvas::SetChar(int x, int y, wchar_t c)
+void Canvas::SetChar(int x, int y, wchar_t c) // рисует знак
 {
 	if (x < 0 || x >= m_BufferSize.X) return;
 	if (y < 0 || y >= m_BufferSize.Y) return;
@@ -80,7 +80,7 @@ void Canvas::SetChar(int x, int y, wchar_t c)
 	m_Buffer[idx].Attributes = FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED;
 }
 
-wchar_t Canvas::GetChar(int x, int y)
+wchar_t Canvas::GetChar(int x, int y) // возвращает код символа
 {
 	if (x < 0 || x >= m_BufferSize.X) return L'\0';
 	if (y < 0 || y >= m_BufferSize.Y) return L'\0';
@@ -88,7 +88,7 @@ wchar_t Canvas::GetChar(int x, int y)
 	return m_Buffer[idx].Char.UnicodeChar;
 }
 
-void Canvas::Clear()
+void Canvas::Clear() // очищение консоли
 {
 	for (int x = 0; x < m_BufferSize.X; x++)
 	{
@@ -99,7 +99,7 @@ void Canvas::Clear()
 	}
 }
 
-void Canvas::Render()
+void Canvas::Render()// дебаг(просто вывод код ошибки) при выводе из буфера
 {
 	if (!WriteConsoleOutput(m_ConsoleOut, m_Buffer, m_BufferSize, m_BufferCoord, &m_WriteRegion))
 		std::cout << "WriteConsoleOutput failed - (%d)\n" << GetLastError() << std::endl;
