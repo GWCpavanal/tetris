@@ -1,3 +1,4 @@
+// своровал, это мини графическая библиотека для консоли
 #include "Canvas.h"
 #include <iostream>
 #include <Windows.h>

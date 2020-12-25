@@ -1,26 +1,29 @@
 #include "GameField.h"
 
-void GameField::Resize(int width, int height) 
+void GameField::Resize(int width, int height) // размер поля
 {
 	m_Width = width;
 	m_Height = height;
+	
+	// точки для заполнения поля
 	m_Field = std::vector<std::vector<wchar_t>>(m_Height - 2, std::vector<wchar_t>(m_Width - 2, 0x0387));
 }
 
-void GameField::Draw(Canvas& canvas) 
+void GameField::Draw(Canvas& canvas) // нарисовать поле
 {
-	for (int i = 1; i < m_Width - 1; ++i) 
+	for (int i = 1; i < m_Width - 1; ++i) //горизонтальные границы
 	{
 		canvas.SetChar(i, 0, 0x2550);
 		canvas.SetChar(i, m_Height - 1, 0x2550);
 	}
 
-	for (int i = 1; i < m_Height - 1; ++i) 
+	for (int i = 1; i < m_Height - 1; ++i) // вертикальные границы
 	{
 		canvas.SetChar(0, i, 0x2551);
 		canvas.SetChar(m_Width - 1, i, 0x2551);
 	}
 
+	// углы
 	canvas.SetChar(0, 0, 0x2554);
 	canvas.SetChar(m_Width - 1, 0, 0x2557);
 	canvas.SetChar(0, m_Height - 1, 0x255A);
@@ -46,7 +49,7 @@ bool GameField::MasCollision(const Figure& figure)// касание границ карты
 	return false;
 }
 
-size_t GameField::Merge(const Figure& figure)
+size_t GameField::Merge(const Figure& figure) // фигуры стакались на друг друге
 {
 	size_t score = 0;
 	Point position = figure.GetPosition();
@@ -63,10 +66,10 @@ size_t GameField::Merge(const Figure& figure)
 		}
 
 
-		if (fool) //если заполнил 
+		if (fool) // если заполнил 
 		{
 			score = 4;//+ 4 очка 
-			for (size_t j = i; j > 0; j--) //оставшиеся фигуры падают вниз
+			for (size_t j = i; j > 0; j--) // оставшиеся фигуры падают вниз
 			{
 				m_Field[j] = m_Field[j - 1];
 			}

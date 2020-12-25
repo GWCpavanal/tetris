@@ -3,8 +3,8 @@
 
 Tetris::Tetris() : m_Figure(Point(5, 1)), m_NextFigure(Point(16, 1))
 {
-	m_GameField.Resize(14, 26);//размер игрового поля
-	m_Canvas.Resize(26, 20);//размер консольного окна
+	m_GameField.Resize(14, 26);// размер игрового поля
+	m_Canvas.Resize(26, 20);// размер консольного окна
 }
 
 void Tetris::OnKeyPressed(int btnCode){
@@ -29,7 +29,8 @@ void Tetris::OnKeyPressed(int btnCode){
 	default:
 		break;
 	}
-
+	
+	//если фигура вышла на границу вернуться в предыдущее положение
 	if (m_GameField.MasCollision(m_Figure)) 
 	{
 		m_Figure.Restore();
@@ -38,28 +39,29 @@ void Tetris::OnKeyPressed(int btnCode){
 
 void Tetris::Update(double dt) 
 {
-	m_Figure.BackUp();
-	m_Figure.Update(dt);
-	if (m_GameField.MasCollision(m_Figure)) 
+	m_Figure.BackUp();// запоминает положение
+	m_Figure.Update(dt);// опускается
+	if (m_GameField.MasCollision(m_Figure)) // когда заполнена горизонтальная линия
 	{
-		m_Figure.Restore();
+		m_Figure.Restore(); // убрать ее
 		m_Score += m_GameField.Merge(m_Figure);
 		if (m_Score > 999999) m_Score = 999999; //что бы не было переполнения рисования
-		m_Figure = m_NextFigure;
-		m_Figure.SetPosition(Point(5, 1));
-		m_NextFigure = Figure(Point(15, 1));
+		m_Figure = m_NextFigure;// след фигура стала текущей
+		m_Figure.SetPosition(Point(5, 1));// начальная точка откуда появляются фигуры
+		m_NextFigure = Figure(Point(15, 1));// генерация следующая фигура
+		// когда уровень постройки достиг вершины - проиграл
 		if (m_GameField.MasCollision(m_Figure))
 		{
 			m_End = true;
 		}
 	}
 	
-	m_Canvas.Clear();
-	m_GameField.Draw(m_Canvas);
-	m_Figure.Draw(m_Canvas);
-	m_NextFigure.Draw(m_Canvas);
-	DrawScore(m_Canvas);
-	m_Canvas.Render();
+	m_Canvas.Clear(); // очистить консоль
+	m_GameField.Draw(m_Canvas); // нарисовать поле
+	m_Figure.Draw(m_Canvas); // падающую
+	m_NextFigure.Draw(m_Canvas); // следующую
+	DrawScore(m_Canvas); // очки
+	m_Canvas.Render(); // рендер
 }
 
 bool Tetris::End() //конец игры - проигрыш
@@ -67,7 +69,7 @@ bool Tetris::End() //конец игры - проигрыш
 	return m_End;
 }
 
-void Tetris::DrawScore(Canvas& canvas)
+void Tetris::DrawScore(Canvas& canvas) // нарисовать счет
 {
 	std::string score = std::to_string(m_Score);
 	

@@ -11,7 +11,7 @@ struct Point {// структура, новый тип данных
 class Figure
 {
 public:
-	Figure(Point position);// конструктор
+	Figure(Point position);
 
 	void Update(double dt);
 	void Draw(Canvas& canvas);
@@ -35,6 +35,6 @@ private:
 	double m_TimeForUpdate = 500;
 	std::vector<std::vector<Point>> m_Body;// массив фигур упавших
 	size_t m_CurrentRotate = 0;//индекс текущего поворота
-	size_t m_CurrentRotateBackUp = 0;
+	size_t m_CurrentRotateBackUp = 0;// предыдущего поворота
 };
 

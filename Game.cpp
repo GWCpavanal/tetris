@@ -8,7 +8,7 @@
 
 Game::Game()
 {
-	m_ConsoleIn = GetStdHandle(STD_INPUT_HANDLE);
+	m_ConsoleIn = GetStdHandle(STD_INPUT_HANDLE); // получение буфера
 }
 
 void Game::Run()
@@ -18,7 +18,7 @@ void Game::Run()
 	{
 		FPS fps;
 
-		if (_kbhit())
+		if (_kbhit()) // нажатие любой клавиши
 		{
 			OnKeyPressed(_getch());
 			if (!FlushConsoleInputBuffer(m_ConsoleIn))

@@ -1,5 +1,12 @@
 #pragma once
 #include <chrono>
+/*
+Ѕиблиотека реализует:
+
+интервалы времени Ц duration;
+моменты времени Ц time_point;
+таймеры Ц clock.
+*/
 
 class FPS
 {

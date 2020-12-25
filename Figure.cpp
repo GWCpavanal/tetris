@@ -55,13 +55,13 @@ std::vector<std::vector<Point>> Generate()// генераця фигуры
 	}
 }
 
-Figure::Figure(Point position)
+Figure::Figure(Point position)// конструктор генерирует фигуру в position
 {
 	m_Position = position;
 	m_Body = Generate();
 }
 
-void Figure::Update(double dt) 
+void Figure::Update(double dt) // падение фигуры вниз
 {
 	m_TimeFromLastUpdate += dt;
 	if (m_TimeFromLastUpdate <= m_TimeForUpdate) return;
@@ -87,10 +87,10 @@ void Figure::MoveL()
 	m_Position.x--;
 }
 
-void Figure::Rotate()
+void Figure::Rotate()// поворот фигуры
 {
 	++m_CurrentRotate;
-	if (m_CurrentRotate >= m_Body.size()) {
+	if (m_CurrentRotate >= m_Body.size()) { //после последнего поворота вернуться в начальную форму
 		m_CurrentRotate = 0;
 	}
 }
@@ -110,19 +110,19 @@ void Figure::SetPosition(Point position)
 	m_Position = position;
 }
 
-void Figure::BackUp()
+void Figure::BackUp()// предыдущее положение фигуры
 {
 	m_PositionBackUp = m_Position;
 	m_CurrentRotateBackUp = m_CurrentRotate;
 }
 
-void Figure::Restore()
+void Figure::Restore() //вернуться в предыдущее положение
 {
 	m_Position = m_PositionBackUp;
 	m_CurrentRotate = m_CurrentRotateBackUp;
 }
 
-void Figure::Boost()
+void Figure::Boost()// быстрое опускание фигуры
 {
 	m_TimeForUpdate = 50;
 }
